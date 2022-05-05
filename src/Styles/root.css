@@ -1,0 +1,62 @@
+/* root */
+
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800;900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+
+:root {
+	/* Cool Gray IBM https://www.ibm.com/design/language/color/ */
+
+	--colorBlack: #000000;
+	--coolGray100: #121619;
+	--coolGray90: #21272a;
+	--coolGray80: #343a3f;
+	--coolGray70: #4d5358;
+	--coolGray60: #697077;
+	--coolGray50: #878d96;
+	--coolGray40: #a2a9b0;
+	--coolGray30: #c1c7cd;
+	--coolGray20: #dde1e6;
+	--coolGray10: #f2f4f8;
+	--colorWhite: #ffffff;
+
+	--colorGreen: #24a148;
+	--colorRed: #fa4d56;
+	--colorOrange: #ff3d00;
+	--colorBlue: #304ffe;
+
+	/* social colors */
+
+	--colorTwitter: #00acee;
+	--colorDiscord: #5865f2;
+
+	/* font size */
+
+	--fontSize1: 3.052rem;
+	--fontSize2: 2.441rem;
+	--fontSize3: 1.953rem;
+	--fontSize4: 1.563rem;
+	--fontSize5: 1.25rem;
+	--fontSize6: 1rem;
+	--fontSize7: 0.8rem;
+
+	/* font weight */
+
+	--fontWeightBlack: 900;
+	--fontWeightBold: 700;
+	--fontWeightMedium: 500;
+	--fontWeightRegular: 400;
+	--fontWeightLight: 300;
+
+	/* font family */
+
+	/* --fontFamily: "Karla", sans-serif; */
+	/* --fontFamily: "Epilogue", sans-serif; */
+	--fontFamily: "Lato", sans-serif;
+}

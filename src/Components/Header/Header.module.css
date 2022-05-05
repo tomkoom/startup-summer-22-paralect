@@ -1,0 +1,25 @@
+/* header */
+
+.header {
+	background-color: var(--colorBlue);
+	padding: 1.5rem;
+}
+
+.headerContent {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.icon {
+	font-size: var(--fontSize2);
+	color: white;
+}
+
+.search {
+	width: 32rem;
+	padding: 0.75rem;
+	font-size: var(--fontSize6);
+	border-radius: 0.5rem;
+	border: none;
+}
