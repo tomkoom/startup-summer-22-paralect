@@ -1,0 +1,22 @@
+/* initial */
+
+.initial {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: var(--grayDark);
+	margin-top: 40px;
+}
+
+.icon {
+	margin-bottom: 24px;
+	font-size: 64px;
+}
+
+.text {
+	font-size: var(--fontSize4);
+	line-height: 150%;
+	max-width: 210px;
+	text-align: center;
+}

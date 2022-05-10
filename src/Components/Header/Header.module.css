@@ -1,25 +1,29 @@
 /* header */
 
 .header {
-	background-color: var(--colorBlue);
-	padding: 1.5rem;
+	display: flex;
+	align-items: center;
+	height: 72px;
+	background-color: var(--primaryColor);
 }
 
 .headerContent {
 	display: flex;
 	align-items: center;
-	gap: 1.5rem;
+	gap: 20px;
+	margin: 0 40px;
 }
 
 .icon {
-	font-size: var(--fontSize2);
+	font-size: 40px;
 	color: white;
 }
 
 .search {
-	width: 32rem;
-	padding: 0.75rem;
+	height: 40px;
+	width: 500px;
+	padding: 0 20px;
 	font-size: var(--fontSize6);
-	border-radius: 0.5rem;
+	border-radius: 6px;
 	border: none;
 }
