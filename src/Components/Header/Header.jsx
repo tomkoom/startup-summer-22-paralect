@@ -4,14 +4,14 @@ import css from "./Header.module.css";
 // icons
 import { iGithub, iSearch } from "../../Icons/Icons";
 
-const Header = ({ setSearch }) => {
+const Header = ({ getUserData }) => {
 	return (
 		<div className={css.header}>
 			<div className={css.headerContent}>
 				<span className={css.icon}>{iGithub}</span>
 				<input
-					onChange={(e) => setSearch(e.target.value)}
-					className={css.search}
+					onKeyDown={(e) => e.key === "Enter" && getUserData(e.target.value)}
+					className={css.input}
 					type="text"
 					placeholder="Enter GitHub username and press Enter"
 				/>

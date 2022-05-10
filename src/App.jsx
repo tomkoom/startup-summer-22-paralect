@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 import "./Styles/root.css";
 import "./Styles/typography.css";
@@ -10,15 +10,14 @@ import { Header } from "./Components";
 import { Blank, Profile } from "./Pages";
 
 function App() {
-	const [search, setSearch] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [userData, setUserData] = useState();
 
-	useEffect(() => {
-		if (search !== "") {
+	const getUserData = (searchQuery) => {
+		if (searchQuery !== "") {
 			setLoading(true);
 			const url = "https://api.github.com/users/";
-			fetch(url + search)
+			fetch(url + searchQuery)
 				.then((res) => res.json())
 				.then((data) => {
 					console.log(data);
@@ -26,14 +25,14 @@ function App() {
 				});
 			setLoading(false);
 		}
-	}, [search]);
+	};
 
 	return (
 		<div className="app">
-			<Header setSearch={setSearch} />
+			<Header getUserData={getUserData} />
 			<div className="content">
 				{/* initial */}
-				{search === "" && <Blank text="Start with searching a GitHub user" icon={iSearch} />}
+				{!userData && <Blank text="Start with searching a GitHub user" icon={iSearch} />}
 				{/* not found */}
 				{userData && userData.message === "Not Found" && <Blank text="User not found" icon={iUser} />}
 				{/* profile */}
