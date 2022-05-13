@@ -1,3 +1,13 @@
+### Registration task for Paralect Startup Summer 2022.
+
+-   [Task description](https://startup-summer-task.paralect.com/)
+-   [Layout in Figma](https://www.figma.com/file/nPPYeW9okkBbIfxafG8XJP/Startup-Summer-2021-Task?node-id=0%3A1)
+-   [Live site](https://subtle-queijadas-e1c923.netlify.app/)
+
+.
+.
+.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -6,7 +16,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm start`
+##### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
