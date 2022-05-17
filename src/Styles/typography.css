@@ -6,44 +6,47 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: var(--black);
-  line-height: 100%;
+	line-height: 100%;
 }
 
 h1 {
-  font-size: var(--fontSize1);
+	font-size: var(--fontSize1);
 }
 
 h2 {
-  font-size: var(--fontSize2);
+	font-size: var(--fontSize2);
+	font-weight: var(--fontWeightSemiBold);
+	line-height: 33.8px;
 }
 
 h3 {
-  font-size: var(--fontSize3);
+	font-size: var(--fontSize3);
+	font-weight: var(--fontWeightMedium);
+	line-height: 29.05px;
 }
 
 h4 {
-  font-size: var(--fontSize4);
+	font-size: var(--fontSize4);
 }
 
 h5 {
-  font-size: var(--fontSize5);
+	font-size: var(--fontSize5);
 }
 
 h6 {
-  font-size: var(--fontSize6);
+	font-size: var(--fontSize6);
 }
 
 .bodyText,
 .subtitle {
-  line-height: 150%;
-  word-wrap: break-word;
+	line-height: 150%;
+	word-wrap: break-word;
 }
 
 .bodyText {
-  font-weight: var(--medium);
+	font-weight: var(--medium);
 }
 
 .subtitle {
-  font-size: var(--fontSize7);
+	font-size: var(--fontSize7);
 }

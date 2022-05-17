@@ -1,0 +1,29 @@
+/* profile */
+
+.profile {
+	padding: 40px 60px;
+}
+
+.avatar {
+	width: 280px;
+	height: 280px;
+	border-radius: 50%;
+}
+
+.username {
+	display: inline-block;
+	margin-top: 12px;
+	color: var(--primaryColor);
+}
+
+.secondaryInfo {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin-top: 24px;
+}
+
+.icon {
+	color: var(--grayDark);
+	margin-right: 8px;
+}

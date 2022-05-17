@@ -36,7 +36,16 @@ function App() {
 				{/* not found */}
 				{userData && userData.message === "Not Found" && <Blank text="User not found" icon={iUser} />}
 				{/* profile */}
-				{userData && <Profile username={userData.login} avatarURL={userData.avatar_url} />}
+				{userData && (
+					<Profile
+						avatarURL={userData.avatar_url}
+						name={userData.name}
+						username={userData.login}
+						htmlURL={userData.html_url}
+						followers={userData.followers}
+						following={userData.following}
+					/>
+				)}
 			</div>
 		</div>
 	);

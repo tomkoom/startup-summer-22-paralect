@@ -3,35 +3,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 
 :root {
-	/* Cool Gray IBM https://www.ibm.com/design/language/color/ */
-
-	--colorBlack: #000000;
-	--coolGray100: #121619;
-	--coolGray90: #21272a;
-	--coolGray80: #343a3f;
-	--coolGray70: #4d5358;
-	--coolGray60: #697077;
-	--coolGray50: #878d96;
-	--coolGray40: #a2a9b0;
-	--coolGray30: #c1c7cd;
-	--coolGray20: #dde1e6;
-	--coolGray10: #f2f4f8;
-	--colorWhite: #ffffff;
-
 	/* project colors */
 	--primaryColor: #0064eb;
 	--grayDark: #808080;
-
-	/* --- */
-	--colorGreen: #24a148;
-	--colorRed: #fa4d56;
-	--colorOrange: #ff3d00;
-	--colorBlue: #304ffe;
-
-	/* social colors */
-
-	--colorTwitter: #00acee;
-	--colorDiscord: #5865f2;
 
 	/* font size */
 
@@ -47,9 +21,9 @@
 
 	--fontWeightBlack: 900;
 	--fontWeightBold: 700;
+	--fontWeightSemiBold: 600;
 	--fontWeightMedium: 500;
 	--fontWeightRegular: 400;
-	--fontWeightLight: 300;
 
 	/* font family */
 
