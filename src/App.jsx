@@ -58,6 +58,7 @@ const App = () => {
 						followers={userData.followers}
 						following={userData.following}
 						repos={userRepos}
+						loading={loading}
 					/>
 				)}
 			</div>

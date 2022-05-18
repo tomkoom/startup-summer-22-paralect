@@ -38,17 +38,3 @@ h5 {
 h6 {
 	font-size: var(--fontSize6);
 }
-
-.bodyText,
-.subtitle {
-	line-height: 150%;
-	word-wrap: break-word;
-}
-
-.bodyText {
-	font-weight: var(--medium);
-}
-
-.subtitle {
-	font-size: var(--fontSize7);
-}

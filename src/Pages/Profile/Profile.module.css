@@ -32,6 +32,10 @@
 
 /* repos */
 
+.repos {
+	flex: 1;
+}
+
 .reposLi {
 	margin: 32px 0;
 	display: flex;
@@ -46,5 +50,6 @@
 }
 
 .repoDescription {
-	margin-top: 16px;
+	margin-top: 12px;
+	line-height: 150%;
 }
