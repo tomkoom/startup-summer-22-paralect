@@ -11,6 +11,8 @@ h6 {
 
 h1 {
 	font-size: var(--fontSize1);
+	font-weight: var(--fontWeightSemiBold);
+	line-height: 41.6px;
 }
 
 h2 {

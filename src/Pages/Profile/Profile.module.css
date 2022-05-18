@@ -2,6 +2,9 @@
 
 .profile {
 	padding: 40px 60px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 96px;
 }
 
 .avatar {
@@ -13,7 +16,6 @@
 .username {
 	display: inline-block;
 	margin-top: 12px;
-	color: var(--primaryColor);
 }
 
 .secondaryInfo {
@@ -26,4 +28,23 @@
 .icon {
 	color: var(--grayDark);
 	margin-right: 8px;
+}
+
+/* repos */
+
+.reposLi {
+	margin: 32px 0;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.reposLiI {
+	padding: 24px 32px;
+	background-color: white;
+	border-radius: 6px;
+}
+
+.repoDescription {
+	margin-top: 16px;
 }

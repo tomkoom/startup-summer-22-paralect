@@ -1,8 +1,10 @@
 import React from "react";
 import css from "./Profile.module.css";
+
+// icons
 import { iUserFriends, iUser } from "../../Icons/Icons";
 
-const Profile = ({ avatarURL, name, username, htmlURL, followers, following }) => {
+const Profile = ({ avatarURL, name, username, htmlURL, followers, following, repos }) => {
 	return (
 		<div className={css.profile}>
 			<div className={css.profileInfo}>
@@ -27,6 +29,23 @@ const Profile = ({ avatarURL, name, username, htmlURL, followers, following }) =
 					</li>
 				</ul>
 			</div>
+			{repos ? (
+				<div className={css.repos}>
+					<h1>Repositories &#40;{repos && repos.length}&#41;</h1>
+					<ul className={css.reposLi}>
+						{repos.map((repo) => (
+							<li className={css.reposLiI} key={repo.id}>
+								<a href={repo.html_url} target="_blank" rel="norefferer noopener">
+									<h3>{repo.name}</h3>
+								</a>
+								<p className={css.repoDescription}>{repo.description}</p>
+							</li>
+						))}
+					</ul>
+				</div>
+			) : (
+				"Undefined"
+			)}
 		</div>
 	);
 };

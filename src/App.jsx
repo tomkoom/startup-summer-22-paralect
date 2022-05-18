@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import "./Styles/root.css";
 import "./Styles/typography.css";
+import { Octokit } from "octokit";
 
 import { iSearch, iUser } from "./Icons/Icons";
 
@@ -9,20 +10,32 @@ import { iSearch, iUser } from "./Icons/Icons";
 import { Header } from "./Components";
 import { Blank, Profile } from "./Pages";
 
-function App() {
+const GITHUB_PERSONAL_ACCESS_TOKEN = process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN;
+const octokit = new Octokit({
+	auth: GITHUB_PERSONAL_ACCESS_TOKEN,
+});
+
+const App = () => {
 	const [loading, setLoading] = useState(false);
 	const [userData, setUserData] = useState();
+	const [userRepos, setUserRepos] = useState();
 
-	const getUserData = (searchQuery) => {
+	const getUserData = async (searchQuery) => {
 		if (searchQuery !== "") {
 			setLoading(true);
-			const url = "https://api.github.com/users/";
-			fetch(url + searchQuery)
-				.then((res) => res.json())
-				.then((data) => {
-					console.log(data);
-					setUserData(data);
-				});
+
+			// fetch user info
+			const user = await octokit.request("GET /users/{username}", {
+				username: searchQuery,
+			});
+			setUserData(user.data);
+
+			// fetch repos
+			const repos = await octokit.request("GET /users/{username}/repos", {
+				username: searchQuery,
+			});
+			setUserRepos(repos.data);
+
 			setLoading(false);
 		}
 	};
@@ -44,11 +57,12 @@ function App() {
 						htmlURL={userData.html_url}
 						followers={userData.followers}
 						following={userData.following}
+						repos={userRepos}
 					/>
 				)}
 			</div>
 		</div>
 	);
-}
+};
 
 export default App;
