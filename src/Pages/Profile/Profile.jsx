@@ -3,7 +3,7 @@ import css from "./Profile.module.css";
 import ReactPaginate from "react-paginate";
 
 // icons
-import { iUserFriends, iUser, iAngleLeft, iAngleRight } from "../../Icons/Icons";
+import { iUserFriends, iUser, iAngleLeft, iAngleRight, iTimesCircle } from "../../Icons/Icons";
 
 // components
 import { Loader } from "../../Components";
@@ -52,40 +52,47 @@ const Profile = ({ userData, repos, loading, handlePageClick, perPage }) => {
 					</div>
 
 					{/* repos */}
-					<div className={css.repos}>
-						<h1>Repositories &#40;{userData.public_repos}&#41;</h1>
-						<ul className={css.reposLi}>
-							{repos &&
-								repos.map((repo) => (
-									<li className={css.reposLiI} key={repo.id}>
-										<a href={repo.html_url} target="_blank" rel="norefferer noopener">
-											<h3>{repo.name}</h3>
-										</a>
-										<p className={css.repoDescription}>{repo.description}</p>
-									</li>
-								))}
-						</ul>
+					{repos && repos.length > 0 ? (
+						<div className={css.repos}>
+							<h1>Repositories &#40;{userData.public_repos}&#41;</h1>
+							<ul className={css.reposLi}>
+								{repos &&
+									repos.map((repo) => (
+										<li className={css.reposLiI} key={repo.id}>
+											<a href={repo.html_url} target="_blank" rel="norefferer noopener">
+												<h3>{repo.name}</h3>
+											</a>
+											<p className={css.repoDescription}>{repo.description}</p>
+										</li>
+									))}
+							</ul>
 
-						{userData && (
-							<ReactPaginate
-								previousLabel={iAngleLeft}
-								breakLabel="..."
-								nextLabel={iAngleRight}
-								onPageChange={handlePageClick}
-								pageRangeDisplayed={3}
-								pageCount={pageCount}
-								renderOnZeroPageCount={null}
-								// styles
-								containerClassName={css.pagination}
-								pageClassName={css.pageLiI}
-								pageLinkClassName={css.pageNum}
-								previousLinkClassName={css.prev}
-								breakLinkClassName={css.break}
-								nextLinkClassName={css.next}
-								activeLinkClassName={css.activePage}
-							/>
-						)}
-					</div>
+							{userData && (
+								<ReactPaginate
+									previousLabel={iAngleLeft}
+									breakLabel="..."
+									nextLabel={iAngleRight}
+									onPageChange={handlePageClick}
+									pageRangeDisplayed={3}
+									pageCount={pageCount}
+									renderOnZeroPageCount={null}
+									// styles
+									containerClassName={css.pagination}
+									pageClassName={css.pageLiI}
+									pageLinkClassName={css.pageNum}
+									previousLinkClassName={css.prev}
+									breakLinkClassName={css.break}
+									nextLinkClassName={css.next}
+									activeLinkClassName={css.activePage}
+								/>
+							)}
+						</div>
+					) : (
+						<div className={css.noRepos}>
+							<span>{iTimesCircle}</span>
+							<p>Repository list is empty</p>
+						</div>
+					)}
 				</div>
 			)}
 		</div>
