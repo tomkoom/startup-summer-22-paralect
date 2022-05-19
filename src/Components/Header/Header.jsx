@@ -18,6 +18,9 @@ const Header = ({ handleSearch }) => {
 						placeholder="Enter GitHub username and press Enter"
 					/>
 				</div>
+				<a className={css.contact} href="https://t.me/tomkoom" target="_blank" rel="noreferrer noopener">
+					@tomkoom
+				</a>
 			</div>
 		</div>
 	);

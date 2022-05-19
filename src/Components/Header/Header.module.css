@@ -43,6 +43,12 @@
 	border: none;
 }
 
+.contact {
+	display: inline-block;
+	margin-left: auto;
+	color: white;
+}
+
 /* responsive */
 
 @media screen and (max-width: 767px) {
