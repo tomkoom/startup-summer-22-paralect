@@ -19,7 +19,8 @@ body {
 
 .content {
 	max-width: 1440px;
-	margin: 0 auto;
+	margin: 40px auto;
+	padding: 0 40px;
 }
 
 /* global styles */
@@ -39,4 +40,18 @@ a {
 
 ::placeholder {
 	color: var(--grayDark);
+}
+
+/* responsive */
+
+@media screen and (max-width: 767px) {
+	.content {
+		padding: 0 20px;
+	}
+}
+
+@media screen and (max-width: 319px) {
+	.content {
+		padding: 0 10px;
+	}
 }

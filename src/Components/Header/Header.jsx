@@ -10,7 +10,6 @@ const Header = ({ handleSearch }) => {
 			<div className={css.headerContent}>
 				<span className={css.icon}>{iGithub}</span>
 				<input
-					// onKeyDown={(e) => e.key === "Enter" && getUserData(e.target.value)}
 					onKeyDown={handleSearch}
 					className={css.input}
 					type="text"

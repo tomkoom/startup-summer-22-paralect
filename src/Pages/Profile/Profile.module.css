@@ -1,9 +1,7 @@
 /* profile */
 
 .profile {
-	padding: 40px 60px;
 	display: flex;
-	flex-wrap: wrap;
 	gap: 96px;
 }
 
@@ -117,4 +115,15 @@
 .next,
 .activePage {
 	border-radius: 3px;
+}
+
+@media screen and (max-width: 767px) {
+	.profile {
+		flex-direction: column;
+		gap: 48px;
+	}
+
+	.pagination {
+		justify-content: center;
+	}
 }

@@ -23,8 +23,23 @@
 .input {
 	height: 40px;
 	width: 500px;
+	min-width: none;
 	padding: 0 20px;
 	font-size: var(--fontSize6);
 	border-radius: 6px;
 	border: none;
+}
+
+/* responsive */
+
+@media screen and (max-width: 767px) {
+	.headerContent {
+		padding: 0 20px;
+	}
+}
+
+@media screen and (max-width: 319px) {
+	.headerContent {
+		padding: 0 10px;
+	}
 }
