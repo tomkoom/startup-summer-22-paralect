@@ -19,30 +19,51 @@ const App = () => {
 	const [loading, setLoading] = useState(false);
 	const [userData, setUserData] = useState();
 	const [userRepos, setUserRepos] = useState();
+	const [searchQuery, setSearchQuery] = useState("");
+	let currentPage = 1;
+	const perPage = 4;
 
-	const getUserData = async (searchQuery) => {
+	const fetchUserData = async () => {
+		const user = await octokit.request("GET /users/{username}", {
+			username: searchQuery,
+		});
+		setUserData(user.data);
+	};
+
+	const fetchUserRepos = async () => {
+		const repos = await octokit.request("GET /users/{username}/repos", {
+			username: searchQuery,
+			page: currentPage,
+			per_page: perPage,
+		});
+		setUserRepos(repos.data);
+	};
+
+	// get user info
+	useEffect(() => {
 		if (searchQuery !== "") {
 			setLoading(true);
-
-			// fetch user info
-			const user = await octokit.request("GET /users/{username}", {
-				username: searchQuery,
-			});
-			setUserData(user.data);
-
-			// fetch repos
-			const repos = await octokit.request("GET /users/{username}/repos", {
-				username: searchQuery,
-			});
-			setUserRepos(repos.data);
-
+			fetchUserData();
+			fetchUserRepos();
 			setLoading(false);
 		}
+	}, [searchQuery]);
+
+	const handleSearch = (e) => {
+		if (e.key === "Enter") {
+			setSearchQuery(e.target.value);
+		}
+	};
+
+	const handlePageClick = (e) => {
+		currentPage = e.selected + 1;
+		fetchUserRepos(currentPage);
+		currentPage = 1;
 	};
 
 	return (
 		<div className="app">
-			<Header getUserData={getUserData} />
+			<Header handleSearch={handleSearch} />
 			<div className="content">
 				{/* initial */}
 				{!userData && <Blank text="Start with searching a GitHub user" icon={iSearch} />}
@@ -51,14 +72,11 @@ const App = () => {
 				{/* profile */}
 				{userData && (
 					<Profile
-						avatarURL={userData.avatar_url}
-						name={userData.name}
-						username={userData.login}
-						htmlURL={userData.html_url}
-						followers={userData.followers}
-						following={userData.following}
+						userData={userData}
 						repos={userRepos}
 						loading={loading}
+						handlePageClick={handlePageClick}
+						perPage={perPage}
 					/>
 				)}
 			</div>

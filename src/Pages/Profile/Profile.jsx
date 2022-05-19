@@ -1,13 +1,16 @@
 import React from "react";
 import css from "./Profile.module.css";
+import ReactPaginate from "react-paginate";
 
 // icons
-import { iUserFriends, iUser } from "../../Icons/Icons";
+import { iUserFriends, iUser, iAngleLeft, iAngleRight } from "../../Icons/Icons";
 
 // components
 import { Loader } from "../../Components";
 
-const Profile = ({ avatarURL, name, username, htmlURL, followers, following, repos, loading }) => {
+const Profile = ({ userData, repos, loading, handlePageClick, perPage }) => {
+	const pageCount = Math.ceil(userData.public_repos / perPage);
+
 	return (
 		<div>
 			{loading ? (
@@ -17,11 +20,22 @@ const Profile = ({ avatarURL, name, username, htmlURL, followers, following, rep
 					<div className={css.profileInfo}>
 						{/* main info */}
 						<div className={css.mainInfo}>
-							{avatarURL && <img className={css.avatar} src={avatarURL} alt={`${username} avatar`} />}
-							{name && <h2>{name}</h2>}
-							{username && (
-								<a className={css.username} href={htmlURL} target="_blank" rel="noreferrer noopener">
-									{username}
+							{userData.avatarURL && (
+								<img
+									className={css.avatar}
+									src={userData.avatar_url}
+									alt={`${userData.username} avatar`}
+								/>
+							)}
+							{userData.name && <h2>{userData.name}</h2>}
+							{userData.username && (
+								<a
+									className={css.username}
+									href={userData.htmlURL}
+									target="_blank"
+									rel="noreferrer noopener"
+								>
+									{userData.username}
 								</a>
 							)}
 						</div>
@@ -29,27 +43,46 @@ const Profile = ({ avatarURL, name, username, htmlURL, followers, following, rep
 						{/* secondary info */}
 						<ul className={css.secondaryInfo}>
 							<li>
-								<span className={css.icon}>{iUserFriends}</span> {followers} followers
+								<span className={css.icon}>{iUserFriends}</span> {userData.followers} followers
 							</li>
 							<li>
-								<span className={css.icon}>{iUser}</span> {following} following
+								<span className={css.icon}>{iUser}</span> {userData.following} following
 							</li>
 						</ul>
 					</div>
 
 					{/* repos */}
 					<div className={css.repos}>
-						<h1>Repositories &#40;{repos && repos.length}&#41;</h1>
+						<h1>Repositories &#40;{userData.public_repos}&#41;</h1>
 						<ul className={css.reposLi}>
-							{repos.map((repo) => (
-								<li className={css.reposLiI} key={repo.id}>
-									<a href={repo.html_url} target="_blank" rel="norefferer noopener">
-										<h3>{repo.name}</h3>
-									</a>
-									<p className={css.repoDescription}>{repo.description}</p>
-								</li>
-							))}
+							{repos &&
+								repos.map((repo) => (
+									<li className={css.reposLiI} key={repo.id}>
+										<a href={repo.html_url} target="_blank" rel="norefferer noopener">
+											<h3>{repo.name}</h3>
+										</a>
+										<p className={css.repoDescription}>{repo.description}</p>
+									</li>
+								))}
 						</ul>
+
+						<ReactPaginate
+							previousLabel={iAngleLeft}
+							breakLabel="..."
+							nextLabel={iAngleRight}
+							onPageChange={handlePageClick}
+							pageRangeDisplayed={3}
+							pageCount={pageCount}
+							renderOnZeroPageCount={null}
+							// styles
+							containerClassName={css.pagination}
+							pageClassName={css.pageLiI}
+							pageLinkClassName={css.pageNum}
+							previousLinkClassName={css.prev}
+							breakLinkClassName={css.break}
+							nextLinkClassName={css.next}
+							activeLinkClassName={css.activePage}
+						/>
 					</div>
 				</div>
 			)}
