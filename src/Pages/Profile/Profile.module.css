@@ -49,6 +49,10 @@
 	border-radius: 6px;
 }
 
+.reposLiI a {
+	display: inline-block;
+}
+
 .repoDescription {
 	margin-top: 12px;
 	line-height: 150%;

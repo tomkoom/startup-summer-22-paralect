@@ -17,17 +17,23 @@ const octokit = new Octokit({
 
 const App = () => {
 	const [loading, setLoading] = useState(false);
-	const [userData, setUserData] = useState();
-	const [userRepos, setUserRepos] = useState();
 	const [searchQuery, setSearchQuery] = useState("");
+	const [userData, setUserData] = useState(undefined);
+	const [userRepos, setUserRepos] = useState(undefined);
+	const [fetchErr, setFetchErr] = useState(undefined);
 	let currentPage = 1;
 	const perPage = 4;
 
 	const fetchUserData = async () => {
-		const user = await octokit.request("GET /users/{username}", {
-			username: searchQuery,
-		});
-		setUserData(user.data);
+		try {
+			const user = await octokit.request("GET /users/{username}", {
+				username: searchQuery,
+			});
+			setFetchErr(undefined);
+			setUserData(user.data);
+		} catch (err) {
+			setFetchErr(err.message);
+		}
 	};
 
 	const fetchUserRepos = async () => {
@@ -46,8 +52,17 @@ const App = () => {
 			fetchUserData();
 			fetchUserRepos();
 			setLoading(false);
+		} else {
+			setFetchErr("");
+			setUserData("");
 		}
 	}, [searchQuery]);
+
+	useEffect(() => {
+		if (fetchErr) {
+			setUserData(undefined);
+		}
+	}, [fetchErr]);
 
 	const handleSearch = (e) => {
 		if (e.key === "Enter") {
@@ -58,7 +73,7 @@ const App = () => {
 	const handlePageClick = (e) => {
 		currentPage = e.selected + 1;
 		fetchUserRepos(currentPage);
-		currentPage = 1;
+		// currentPage = 1;
 	};
 
 	return (
@@ -66,9 +81,11 @@ const App = () => {
 			<Header handleSearch={handleSearch} />
 			<div className="content">
 				{/* initial */}
-				{!userData && <Blank text="Start with searching a GitHub user" icon={iSearch} />}
+				{!userData && !fetchErr && <Blank text="Start with searching a GitHub user" icon={iSearch} />}
+
 				{/* not found */}
-				{userData && userData.message === "Not Found" && <Blank text="User not found" icon={iUser} />}
+				{fetchErr === "Not Found" && <Blank text="User not found" icon={iUser} />}
+
 				{/* profile */}
 				{userData && (
 					<Profile

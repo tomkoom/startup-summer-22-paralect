@@ -4,7 +4,7 @@ import css from "./Header.module.css";
 // icons
 import { iGithub, iSearch } from "../../Icons/Icons";
 
-const Header = ({ getUserData, handleSearch }) => {
+const Header = ({ handleSearch }) => {
 	return (
 		<div className={css.header}>
 			<div className={css.headerContent}>

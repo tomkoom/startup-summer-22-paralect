@@ -20,7 +20,7 @@ const Profile = ({ userData, repos, loading, handlePageClick, perPage }) => {
 					<div className={css.profileInfo}>
 						{/* main info */}
 						<div className={css.mainInfo}>
-							{userData.avatarURL && (
+							{userData.avatar_url && (
 								<img
 									className={css.avatar}
 									src={userData.avatar_url}
@@ -66,23 +66,25 @@ const Profile = ({ userData, repos, loading, handlePageClick, perPage }) => {
 								))}
 						</ul>
 
-						<ReactPaginate
-							previousLabel={iAngleLeft}
-							breakLabel="..."
-							nextLabel={iAngleRight}
-							onPageChange={handlePageClick}
-							pageRangeDisplayed={3}
-							pageCount={pageCount}
-							renderOnZeroPageCount={null}
-							// styles
-							containerClassName={css.pagination}
-							pageClassName={css.pageLiI}
-							pageLinkClassName={css.pageNum}
-							previousLinkClassName={css.prev}
-							breakLinkClassName={css.break}
-							nextLinkClassName={css.next}
-							activeLinkClassName={css.activePage}
-						/>
+						{userData && (
+							<ReactPaginate
+								previousLabel={iAngleLeft}
+								breakLabel="..."
+								nextLabel={iAngleRight}
+								onPageChange={handlePageClick}
+								pageRangeDisplayed={3}
+								pageCount={pageCount}
+								renderOnZeroPageCount={null}
+								// styles
+								containerClassName={css.pagination}
+								pageClassName={css.pageLiI}
+								pageLinkClassName={css.pageNum}
+								previousLinkClassName={css.prev}
+								breakLinkClassName={css.break}
+								nextLinkClassName={css.next}
+								activeLinkClassName={css.activePage}
+							/>
+						)}
 					</div>
 				</div>
 			)}
