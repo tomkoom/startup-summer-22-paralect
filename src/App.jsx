@@ -4,6 +4,7 @@ import "./Styles/root.css";
 import "./Styles/typography.css";
 import { Octokit } from "octokit";
 
+// icons
 import { iSearch, iUser } from "./Icons/Icons";
 
 // components
@@ -53,8 +54,8 @@ const App = () => {
 			fetchUserRepos();
 			setLoading(false);
 		} else {
-			setFetchErr("");
-			setUserData("");
+			setFetchErr(undefined);
+			setUserData(undefined);
 		}
 	}, [searchQuery]);
 
