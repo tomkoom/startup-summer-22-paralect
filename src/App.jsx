@@ -22,7 +22,7 @@ const App = () => {
 	const [userData, setUserData] = useState(undefined);
 	const [userRepos, setUserRepos] = useState(undefined);
 	const [fetchErr, setFetchErr] = useState(undefined);
-	let currentPage = 1;
+	const [currentPage, setCurrentPage] = useState(0);
 	const perPage = 4;
 
 	const fetchUserData = async () => {
@@ -37,13 +37,25 @@ const App = () => {
 		}
 	};
 
-	const fetchUserRepos = async () => {
+	const fetchUserRepos = async (currentPage) => {
 		const repos = await octokit.request("GET /users/{username}/repos", {
 			username: searchQuery,
 			page: currentPage,
 			per_page: perPage,
 		});
 		setUserRepos(repos.data);
+	};
+
+	const handleSearch = (e) => {
+		if (e.key === "Enter") {
+			setSearchQuery(e.target.value);
+		}
+	};
+
+	const handlePageClick = (e) => {
+		const currentPage = e.selected;
+		fetchUserRepos(currentPage);
+		setCurrentPage(currentPage);
 	};
 
 	// get user info
@@ -62,23 +74,19 @@ const App = () => {
 		}
 	}, [searchQuery]);
 
+	// set err
 	useEffect(() => {
 		if (fetchErr) {
 			setUserData(undefined);
 		}
 	}, [fetchErr]);
 
-	const handleSearch = (e) => {
-		if (e.key === "Enter") {
-			setSearchQuery(e.target.value);
+	// reset page
+	useEffect(() => {
+		if (userData) {
+			setCurrentPage(0);
 		}
-	};
-
-	const handlePageClick = (e) => {
-		currentPage = e.selected + 1;
-		fetchUserRepos(currentPage);
-		// currentPage = 1;
-	};
+	}, [userData]);
 
 	return (
 		<div className="app">
@@ -98,6 +106,7 @@ const App = () => {
 						loading={loading}
 						handlePageClick={handlePageClick}
 						perPage={perPage}
+						currentPage={currentPage}
 					/>
 				)}
 			</div>

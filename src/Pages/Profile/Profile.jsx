@@ -8,7 +8,7 @@ import { iUserFriends, iUser, iAngleLeft, iAngleRight, iTimesCircle } from "../.
 // components
 import { Loader } from "../../Components";
 
-const Profile = ({ userData, repos, loading, handlePageClick, perPage }) => {
+const Profile = ({ userData, repos, loading, handlePageClick, perPage, currentPage }) => {
 	const pageCount = Math.ceil(userData.public_repos / perPage);
 
 	return (
@@ -73,6 +73,7 @@ const Profile = ({ userData, repos, loading, handlePageClick, perPage }) => {
 									breakLabel="..."
 									nextLabel={iAngleRight}
 									onPageChange={handlePageClick}
+									forcePage={currentPage}
 									pageRangeDisplayed={3}
 									pageCount={pageCount}
 									renderOnZeroPageCount={null}
