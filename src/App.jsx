@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import "./Styles/root.css";
 import "./Styles/typography.css";
@@ -49,10 +49,13 @@ const App = () => {
 	// get user info
 	useEffect(() => {
 		if (searchQuery !== "") {
-			setLoading(true);
-			fetchUserData();
-			fetchUserRepos();
-			setLoading(false);
+			const run = async () => {
+				setLoading(true);
+				await fetchUserData();
+				await fetchUserRepos();
+				setLoading(false);
+			};
+			run();
 		} else {
 			setFetchErr(undefined);
 			setUserData(undefined);

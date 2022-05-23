@@ -59,7 +59,7 @@ const Profile = ({ userData, repos, loading, handlePageClick, perPage }) => {
 								{repos &&
 									repos.map((repo) => (
 										<li className={css.reposLiI} key={repo.id}>
-											<a href={repo.html_url} target="_blank" rel="norefferer noopener">
+											<a href={repo.html_url} target="_blank" rel="noreferrer noopener">
 												<h3>{repo.name}</h3>
 											</a>
 											<p className={css.repoDescription}>{repo.description}</p>
